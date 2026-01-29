@@ -54,7 +54,6 @@
     <div id="opcoes"></div>
 
     <script>
-        // GARANTE que o HTML já carregou
         document.addEventListener("DOMContentLoaded", function () {
 
             const historia = document.getElementById("historia");
@@ -131,17 +130,16 @@
                 `;
             }
 
-            // EXPÕE funções pro HTML
             window.inicio = inicio;
             window.explorar = explorar;
             window.lerBolsa = lerBolsa;
             window.lembrarTraicao = lembrarTraicao;
             window.luz = luz;
 
-            // INICIA
             inicio();
         });
     </script>
 
 </body>
 </html>
+
