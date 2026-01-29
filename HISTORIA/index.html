@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Escolha Seu Destino</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 100px;
+            transition: background-color 1.5s;
+        }
+        
+        h1 {
+            margin-bottom: 40px;
+        }
+        
+        #historia {
+            font-size: 20px;
+            max-width: 700px;
+            margin: auto;
+            min-height: 120px;
+        }
+        
+        #opcoes {
+            margin-top: 40px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #ffffff;
+        }
+        
+        button:hover {
+            background-color: #dcdcdc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🌌 Escolha Seu Destino 🌌</h1>
+
+    <p id="historia"></p>
+
+    <div id="opcoes"></div>
+
+    <script>
+        const historia = document.getElementById("historia");
+        const opcoes = document.getElementById("opcoes");
+
+        function escreverTexto(texto) {
+            historia.innerHTML = "";
+            let i = 0;
+
+            const intervalo = setInterval(() => {
+                historia.innerHTML += texto.charAt(i);
+                i++;
+                if (i >= texto.length) clearInterval(intervalo);
+            }, 40);
+        }
+
+        function mudarFundo(cor) {
+            document.body.style.backgroundColor = cor;
+        }
+
+        function inicio() {
+            mudarFundo("#1a1a2e");
+            escreverTexto(
+                "Você acorda em uma caverna escura. O ar é úmido, o silêncio pesa e uma luz fraca pulsa no fim do túnel. Algo dentro de você diz que esse lugar não é apenas uma prisão."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="explorar()">Explorar a caverna</button>
+                <button onclick="luz()">Seguir a luz</button>
+            `;
+        }
+
+        function explorar() {
+            mudarFundo("#2a2a40");
+            escreverTexto(
+                "Você explora a caverna e encontra uma bolsa antiga. Símbolos estranhos brilham levemente, como se reagissem à sua presença."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="lerBolsa()">Abrir a bolsa</button>
+            `;
+        }
+
+        function lerBolsa() {
+            mudarFundo("#3a2a50");
+            escreverTexto(
+                "Ao tocar os símbolos, memórias invadem sua mente. Você fazia parte da Ordem do Véu, guardiões de um segredo capaz de destruir o mundo."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="lembrarTraicao()">Lembrar da traição</button>
+                <button onclick="fecharBolsa()">Fechar a bolsa</button>
+            `;
+        }
+
+        function lembrarTraicao() {
+            mudarFundo("#4a1a1a");
+            escreverTexto(
+                "Você se lembra da traição. Seus próprios aliados decidiram que o segredo era perigoso demais. Para salvar o mundo, selaram você junto com ele."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="aceitarDestino()">Aceitar o destino</button>
+                <button onclick="buscarVinganca()">Buscar vingança</button>
+            `;
+        }
+
+        function fecharBolsa() {
+            mudarFundo("#1f2b3a");
+            escreverTexto(
+                "Você fecha a bolsa com medo. Mas a caverna treme. Ignorar a verdade parece ter despertado algo antigo."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="explorarMais()">Explorar mais a caverna</button>
+            `;
+        }
+
+        function explorarMais() {
+            mudarFundo("#2b3a1f");
+            escreverTexto(
+                "Inscrições antigas cobrem as paredes. Elas falam de um ser selado à sua alma. A luz no túnel começa a pulsar intensamente."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="luz()">Ir até a luz</button>
+            `;
+        }
+
+        function luz() {
+            mudarFundo("#f5f5dc");
+            escreverTexto(
+                "Você caminha até a luz. Ela não é apenas uma saída, mas um selo. O que você decidir agora mudará tudo."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="aceitarDestino()">Manter o selo</button>
+                <button onclick="buscarVinganca()">Quebrar o selo</button>
+            `;
+        }
+
+        function aceitarDestino() {
+            mudarFundo("#1a1a1a");
+            escreverTexto(
+                "Você aceita o sacrifício. Seu corpo se desfaz em luz, selando o segredo para sempre. O mundo permanece seguro, mas seu nome se torna apenas uma lenda esquecida."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="inicio()">Recomeçar história</button>
+            `;
+        }
+
+        function buscarVinganca() {
+            mudarFundo("#3b0000");
+            escreverTexto(
+                "Consumido pelo ódio, você quebra o selo. O poder retorna ao mundo. Você será lembrado como libertador… ou como o início do fim."
+            );
+
+            opcoes.innerHTML = `
+                <button onclick="inicio()">Recomeçar história</button>
+            `;
+        }
+
+        // iniciar automaticamente
+        inicio();
+    </script>
+
+</body>
+
+</html>
